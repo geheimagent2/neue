@@ -37,6 +37,24 @@ public/
   images/logo.png   # Marken-Logo (Platzhalter)
 ```
 
+## Deployment auf Netlify
+
+Das Projekt ist für Netlify als **statischer Export** vorkonfiguriert:
+
+- `next.config.mjs` setzt `output: "export"` → `next build` erzeugt `out/`.
+- `netlify.toml` legt Build-Command (`npm run build`) und Publish-Ordner
+  (`out`) fest und pinnt Node 20.
+- `next/image` läuft im `unoptimized`-Modus, damit keine Netlify-Functions
+  nötig sind.
+
+Workflow:
+
+1. In Netlify „Add new site → Import from Git" wählen und dieses Repo plus
+   den Branch `claude/pocela-landing-page-6GMig` verbinden.
+2. Build- und Publish-Einstellungen werden automatisch aus `netlify.toml`
+   übernommen.
+3. Deploy Previews entstehen für jeden Push auf den Branch.
+
 ## Shopify-Anbindung
 
 `components/Shop.tsx` liest die Umgebungsvariable
